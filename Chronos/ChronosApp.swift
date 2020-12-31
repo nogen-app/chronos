@@ -22,7 +22,7 @@ struct ChronosApp: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
     var statusBarMenu = NSMenu.init(title: "Chronos")
-    var ipcClient = IPCClient(serviceName: "nogen.Chronus.XPCService")
+    var ipcClient = IPCClient(serviceName: "nogen.Chronos.XPCService")
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
