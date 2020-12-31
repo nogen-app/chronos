@@ -13,6 +13,10 @@ class ChronosServiceDelegate: NSObject, NSXPCListenerDelegate {
         let exportedObject = ChronosService()
         newConnection.exportedInterface = NSXPCInterface(with: ChronosServiceProtocol.self)
         newConnection.exportedObject = exportedObject
+        newConnection.remoteObjectInterface = NSXPCInterface(with: ChronosClientProtocol.self)
+        _remoteObject = newConnection.remoteObjectProxyWithErrorHandler({ error in print("XPC error: ", error)
+        }) as? ChronosClientProtocol
+        
         newConnection.resume()
         return true
     }
