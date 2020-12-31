@@ -6,8 +6,8 @@
 import Foundation
 
 class ChronusService: NSObject, ChronusServiceProtocol {
-    func upperCaseString(_ string: String, withReply reply: @escaping (String) -> Void) {
-        let response = string.uppercased()
-        reply(response)
+    func chooseTimezone(_ timezone: TimeZone, withReply reply: @escaping (String) -> Void) {
+        //let response = string.uppercased()
+        reply("Succesful")
     }
 }
