@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		57A536C7259E156400EC3892 /* XPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 57A536BC259E156400EC3892 /* XPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		57A536DF259E16BF00EC3892 /* ChronusServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536BF259E156400EC3892 /* ChronusServiceDelegate.swift */; };
-		57A536E0259E16BF00EC3892 /* ChronusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536C0259E156400EC3892 /* ChronusService.swift */; };
+		57A536DF259E16BF00EC3892 /* ChronosServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536BF259E156400EC3892 /* ChronosServiceDelegate.swift */; };
+		57A536E0259E16BF00EC3892 /* ChronosService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536C0259E156400EC3892 /* ChronosService.swift */; };
 		57A536E1259E16BF00EC3892 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536C2259E156400EC3892 /* main.swift */; };
-		57A53700259E1ED700EC3892 /* ChronusServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FE259E1ED700EC3892 /* ChronusServiceProtocol.swift */; };
-		57A53701259E1ED700EC3892 /* ChronusServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FE259E1ED700EC3892 /* ChronusServiceProtocol.swift */; };
-		57A53702259E1ED700EC3892 /* ChronusClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FF259E1ED700EC3892 /* ChronusClientProtocol.swift */; };
-		57A53703259E1ED700EC3892 /* ChronusClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FF259E1ED700EC3892 /* ChronusClientProtocol.swift */; };
+		57A53700259E1ED700EC3892 /* ChronosServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FE259E1ED700EC3892 /* ChronosServiceProtocol.swift */; };
+		57A53701259E1ED700EC3892 /* ChronosServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FE259E1ED700EC3892 /* ChronosServiceProtocol.swift */; };
+		57A53702259E1ED700EC3892 /* ChronosClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FF259E1ED700EC3892 /* ChronosClientProtocol.swift */; };
+		57A53703259E1ED700EC3892 /* ChronosClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536FF259E1ED700EC3892 /* ChronosClientProtocol.swift */; };
 		57A53707259E20F000EC3892 /* IPCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A53706259E20F000EC3892 /* IPCClient.swift */; };
 		57A5370B259E236100EC3892 /* ChronosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5370A259E236100EC3892 /* ChronosClient.swift */; };
 		7F5F16122598F2F7004122EF /* ChronosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5F16112598F2F7004122EF /* ChronosApp.swift */; };
@@ -49,12 +49,12 @@
 
 /* Begin PBXFileReference section */
 		57A536BC259E156400EC3892 /* XPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
-		57A536BF259E156400EC3892 /* ChronusServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronusServiceDelegate.swift; sourceTree = "<group>"; };
-		57A536C0259E156400EC3892 /* ChronusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronusService.swift; sourceTree = "<group>"; };
+		57A536BF259E156400EC3892 /* ChronosServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronosServiceDelegate.swift; sourceTree = "<group>"; };
+		57A536C0259E156400EC3892 /* ChronosService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronosService.swift; sourceTree = "<group>"; };
 		57A536C2259E156400EC3892 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		57A536C4259E156400EC3892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57A536FE259E1ED700EC3892 /* ChronusServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChronusServiceProtocol.swift; sourceTree = "<group>"; };
-		57A536FF259E1ED700EC3892 /* ChronusClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChronusClientProtocol.swift; sourceTree = "<group>"; };
+		57A536FE259E1ED700EC3892 /* ChronosServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChronosServiceProtocol.swift; sourceTree = "<group>"; };
+		57A536FF259E1ED700EC3892 /* ChronosClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChronosClientProtocol.swift; sourceTree = "<group>"; };
 		57A53706259E20F000EC3892 /* IPCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCClient.swift; sourceTree = "<group>"; };
 		57A5370A259E236100EC3892 /* ChronosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronosClient.swift; sourceTree = "<group>"; };
 		7F5F160E2598F2F7004122EF /* Chronos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +87,8 @@
 		57A536BD259E156400EC3892 /* XPCService */ = {
 			isa = PBXGroup;
 			children = (
-				57A536BF259E156400EC3892 /* ChronusServiceDelegate.swift */,
-				57A536C0259E156400EC3892 /* ChronusService.swift */,
+				57A536BF259E156400EC3892 /* ChronosServiceDelegate.swift */,
+				57A536C0259E156400EC3892 /* ChronosService.swift */,
 				57A536C2259E156400EC3892 /* main.swift */,
 				57A536C4259E156400EC3892 /* Info.plist */,
 			);
@@ -98,8 +98,8 @@
 		57A536FD259E1EBA00EC3892 /* IPC */ = {
 			isa = PBXGroup;
 			children = (
-				57A536FF259E1ED700EC3892 /* ChronusClientProtocol.swift */,
-				57A536FE259E1ED700EC3892 /* ChronusServiceProtocol.swift */,
+				57A536FF259E1ED700EC3892 /* ChronosClientProtocol.swift */,
+				57A536FE259E1ED700EC3892 /* ChronosServiceProtocol.swift */,
 			);
 			path = IPC;
 			sourceTree = "<group>";
@@ -245,10 +245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A53703259E1ED700EC3892 /* ChronusClientProtocol.swift in Sources */,
-				57A53701259E1ED700EC3892 /* ChronusServiceProtocol.swift in Sources */,
-				57A536DF259E16BF00EC3892 /* ChronusServiceDelegate.swift in Sources */,
-				57A536E0259E16BF00EC3892 /* ChronusService.swift in Sources */,
+				57A53703259E1ED700EC3892 /* ChronosClientProtocol.swift in Sources */,
+				57A53701259E1ED700EC3892 /* ChronosServiceProtocol.swift in Sources */,
+				57A536DF259E16BF00EC3892 /* ChronosServiceDelegate.swift in Sources */,
+				57A536E0259E16BF00EC3892 /* ChronosService.swift in Sources */,
 				57A536E1259E16BF00EC3892 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,9 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A53700259E1ED700EC3892 /* ChronusServiceProtocol.swift in Sources */,
+				57A53700259E1ED700EC3892 /* ChronosServiceProtocol.swift in Sources */,
 				57A5370B259E236100EC3892 /* ChronosClient.swift in Sources */,
-				57A53702259E1ED700EC3892 /* ChronusClientProtocol.swift in Sources */,
+				57A53702259E1ED700EC3892 /* ChronosClientProtocol.swift in Sources */,
 				7F5F162325990D92004122EF /* EmptyView.swift in Sources */,
 				7F5F16122598F2F7004122EF /* ChronosApp.swift in Sources */,
 				57A53707259E20F000EC3892 /* IPCClient.swift in Sources */,
