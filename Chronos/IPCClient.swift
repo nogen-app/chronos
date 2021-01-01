@@ -28,8 +28,8 @@ class IPCClient: ObservableObject {
         } as? ChronosServiceProtocol
     }
     
-    func chooseTimezone(timezone: TimeZone) -> String {
-        var result: String = ""
+    func chooseTimezone(timezone: TimeZone) -> Date {
+        var result = Date()
         let semaphore = DispatchSemaphore(value: 0)
         
         _service?.chooseTimezone(timezone){ response in

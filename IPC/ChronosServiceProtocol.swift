@@ -8,5 +8,5 @@
 import Foundation
 
 @objc public protocol ChronosServiceProtocol {
-    func chooseTimezone(_ timezone: TimeZone, withReply reply: @escaping (String) -> Void)
+    func chooseTimezone(_ timezone: TimeZone, withReply reply: @escaping (Date) -> Void)
 }
