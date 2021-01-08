@@ -11,9 +11,9 @@ class TimezoneUtil {
     
     func getDate(_ timezone: TimeZone) -> Date {
         let now = Date()
-        let formatter = DateFormatter()
-        let stringFormatter = DateFormatter()
-        formatter.timeZone = timezone
-        return formatter.date(from: stringFormatter.string(from: now))!
+        // Adds the GMT offset of the calendar to the current date, meaning it should return the time in said timezone
+        let calendar = Caleqqndar.current
+        let timezoneDate = calendar.date(byAdding: .second, value: timezone.secondsFromGMT(), to: now)
+        return timezoneDate!;
     }
 }

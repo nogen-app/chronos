@@ -46,6 +46,16 @@
 			name = "Embed XPC Services";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		57A53734259FB4FA00EC3892 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -177,6 +187,7 @@
 				7F5F160B2598F2F7004122EF /* Frameworks */,
 				7F5F160C2598F2F7004122EF /* Resources */,
 				57A536C8259E156400EC3892 /* Embed XPC Services */,
+				57A53734259FB4FA00EC3892 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,7 +302,7 @@
 				INFOPLIST_FILE = XPCService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nogen.Chronus.XPCService;
+				PRODUCT_BUNDLE_IDENTIFIER = nogen.Chronos.XPCService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -310,7 +321,7 @@
 				INFOPLIST_FILE = XPCService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nogen.Chronus.XPCService;
+				PRODUCT_BUNDLE_IDENTIFIER = nogen.Chronos.XPCService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
