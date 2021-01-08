@@ -7,10 +7,12 @@
 import Foundation
 
 class ChronosServiceDelegate: NSObject, NSXPCListenerDelegate {
-    var _remoteObject: ChronosClientProtocol?
+    private var _remoteObject: ChronosClientProtocol?
+    private var _chronosService: ChronosService?
     
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
-        let exportedObject = ChronosService()
+        _chronosService = ChronosService()
+        let exportedObject = _chronosService
         newConnection.exportedInterface = NSXPCInterface(with: ChronosServiceProtocol.self)
         newConnection.exportedObject = exportedObject
         newConnection.remoteObjectInterface = NSXPCInterface(with: ChronosClientProtocol.self)
@@ -21,8 +23,12 @@ class ChronosServiceDelegate: NSObject, NSXPCListenerDelegate {
         return true
     }
     
-    func RemoteObject() -> ChronosClientProtocol {
+    public func RemoteObject() -> ChronosClientProtocol {
         return self._remoteObject!
+    }
+    
+    public func ChronosSevice() -> ChronosService {
+        return self._chronosService!
     }
     
 }

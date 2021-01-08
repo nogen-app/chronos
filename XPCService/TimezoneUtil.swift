@@ -9,10 +9,10 @@ import Foundation
 
 class TimezoneUtil {
     
-    func getDate(_ timezone: TimeZone) -> Date {
+    class func getDate(timezone: TimeZone) -> Date {
         let now = Date()
         // Adds the GMT offset of the calendar to the current date, meaning it should return the time in said timezone
-        let calendar = Caleqqndar.current
+        let calendar = Calendar.current
         let timezoneDate = calendar.date(byAdding: .second, value: timezone.secondsFromGMT(), to: now)
         return timezoneDate!;
     }

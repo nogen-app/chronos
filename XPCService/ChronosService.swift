@@ -10,6 +10,9 @@ class ChronosService: NSObject, ChronosServiceProtocol {
         //let response = string.uppercased()
         let timezoneUtil = TimezoneUtil()
         
+        // Saves the timezone in the global struct
+        SavedTimezone.timezone = timezone
+        
         reply(timezoneUtil.getDate(timezone))
     }
 }
