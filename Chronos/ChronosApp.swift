@@ -22,10 +22,12 @@ struct ChronosApp: App {
 class AppDelegatee: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
     var statusBarMenu = NSMenu.init(title: "Chronos")
+    var ipcClient = IPCClient(serviceName: "nogen.Chronos.XPCService")
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusBarItem?.button?.title = "Chronos"
+      
         
         var timeZones = [Substring: [Substring]]()
                 
