@@ -27,9 +27,6 @@ public class ObserverManager {
     func notifyObservers() {
         _observers.forEach({ $0.updateTime(_date) })
     }
-    
-    // gui should create an observer that observes the "updateClock" pattern
-    // ChronosClient manager.notify("Date") -> Void
 }
 
 protocol Observer {

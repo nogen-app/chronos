@@ -127,7 +127,14 @@ class ChronosStatusBar: Observer {
 
 
     private func refreshView(_ date: Date) -> Void {
-        let dateString = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short)
+        print("refreshView: ")
+        print(date)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.timeZone = TimeZone.init(abbreviation: "UTC")
+        let dateString = formatter.string(from: date)
+        print(dateString)
         _statusBarItem?.button?.title = dateString
     }
     
@@ -135,7 +142,6 @@ class ChronosStatusBar: Observer {
      * This function is used by the IPCClient to update the time
      */
     public func updateTime(_ date: Date) -> Void {
-        print("updateTime hit")
         DispatchQueue.main.sync {
             self.refreshView(date)
         }

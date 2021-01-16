@@ -12,7 +12,7 @@ let listener = NSXPCListener.service()
 listener.delegate = delegate
 // Starts a new background thread
 var timer = DispatchSource.makeTimerSource()
-timer.schedule(deadline: .now(), repeating: .seconds(1))
+timer.schedule(deadline: .now(), repeating: .seconds(5))
 timer.setEventHandler(handler: {
     /*
     Checks if there is a timezone saved
