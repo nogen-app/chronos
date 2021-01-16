@@ -23,6 +23,7 @@
 		7F5F16192598F2F8004122EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5F16182598F2F8004122EF /* Preview Assets.xcassets */; };
 		7F5F162325990D92004122EF /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5F162225990D92004122EF /* EmptyView.swift */; };
 		7F5F1644259E2A8C004122EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5F1643259E2A8C004122EF /* AppDelegate.swift */; };
+		7FBC4E7925B340AA00796810 /* ChronosStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC4E7825B340AA00796810 /* ChronosStatusBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		7F5F161B2598F2F8004122EF /* Chronos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chronos.entitlements; sourceTree = "<group>"; };
 		7F5F162225990D92004122EF /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		7F5F1643259E2A8C004122EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7FBC4E7825B340AA00796810 /* ChronosStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronosStatusBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				7F5F1643259E2A8C004122EF /* AppDelegate.swift */,
 				57A53706259E20F000EC3892 /* IPCClient.swift */,
 				57A5370A259E236100EC3892 /* ChronosClient.swift */,
+				7FBC4E7825B340AA00796810 /* ChronosStatusBar.swift */,
 			);
 			path = Chronos;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				57A53702259E1ED700EC3892 /* ChronosClientProtocol.swift in Sources */,
 				7F5F162325990D92004122EF /* EmptyView.swift in Sources */,
 				7F5F16122598F2F7004122EF /* ChronosApp.swift in Sources */,
+				7FBC4E7925B340AA00796810 /* ChronosStatusBar.swift in Sources */,
 				57A53707259E20F000EC3892 /* IPCClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
