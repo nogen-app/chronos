@@ -10,12 +10,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 class ChronosStatusBar {
+    private var _exists: [Substring: NSMenu]
+    private var _comp: [Substring: Substring]
     private var _statusBarItem: NSStatusItem?
     private var _statusBarMenu = NSMenu.init(title: "Chronos")
     private let _IPCClient: IPCClient
 
     init() {
         _statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        _exists = [Substring: NSMenu]()
+        _comp = [Substring: Substring]()
         _IPCClient = IPCClient.init(serviceName: "nogen.Chronos.XPCService")
 
         setup()
@@ -32,26 +36,58 @@ class ChronosStatusBar {
         setupStatusBarMenu()
         
         // Add the status bar menu to the item
-        self._statusBarItem?.menu = self._statusBarMenu
+        _statusBarItem?.menu = _statusBarMenu
     }
     
-    private func setupStatusBarMenu() {
-        var exists = [Substring: NSMenu]()
+    private func setupStatusBarMenu() -> Void {
+//        var exists = [Substring: NSMenu]()
         
         for timeZone in TimeZone.knownTimeZoneIdentifiers {
-            print(timeZone)
-            
-            // 1: Africa/Abidjan -> (Africa, Abidjan)
-            // 2: Africa/Accra -> (Africa, Accra)
-            // 3: America/Argentina/Buenes_aires -> (America, Argentina/Buenes_aires)
-            let (first, rest) = splitTimezone(timeZone)
-    
-            if exists[first] == nil {
-                let menu = createMenu(title: first, item: rest)
-                exists[first] = menu
-            } else {
-                addItemToMenu(menu: exists[first]!, item: rest)
+            if timeZone != "GMT" {
+//                print(timeZone)
+                
+                recurse(timeZone)
+                
+                // 1: Africa/Abidjan -> (Africa, Abidjan)
+                // 2: Africa/Accra -> (Africa, Accra)
+                // 3: America/Argentina/Buenes_aires -> (America, Argentina/Buenes_aires)
+//                let (first, rest) = splitTimezone(timeZone)
+//
+//                if exists[first] == nil {
+//                    let menu = createMenu(title: first, item: rest)
+//                    exists[first] = menu
+//                } else {
+//                    addItemToMenu(menu: exists[first]!, item: rest)
+//                }
             }
+        }
+        print(_comp)
+        for (title, menu) in _exists {
+            print(title)
+            print(menu.items)
+            print("--------------------------------------------------------")
+            
+//            if menu.items.contains
+            let menuItem = NSMenuItem.init()
+            menuItem.title = String(title)
+            menuItem.submenu = menu
+
+            _statusBarMenu.addItem(menuItem)
+        }
+    }
+    
+    private func recurse(_ timeZone: String) {
+        let (first, rest) = splitTimezone(timeZone)
+
+        if rest.contains("/") {
+            let (newFirst, _) = splitTimezone(String(rest))
+            _comp[newFirst] = first
+            recurse(String(rest))
+        } else if _exists[first] == nil {
+            let menu = createMenu(title: first, item: rest)
+            _exists[first] = menu
+        } else {
+            addItemToMenu(menu: _exists[first]!, item: rest)
         }
     }
     
@@ -78,7 +114,7 @@ class ChronosStatusBar {
         
         var rest: [Substring] = []
         
-        for index in 1...parts.count {
+        for index in 1...parts.count - 1 {
             rest.append(parts[index])
         }
 
@@ -91,6 +127,6 @@ class ChronosStatusBar {
     public func updateTime(_ date: Date) -> Void {
         let dateString = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short)
         
-        self._statusBarItem?.button?.title = dateString
+        _statusBarItem?.button?.title = dateString
     }
 }
