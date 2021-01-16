@@ -19,7 +19,7 @@ struct ChronosApp: App {
     }
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegatee: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
     var statusBarMenu = NSMenu.init(title: "Chronos")
     
