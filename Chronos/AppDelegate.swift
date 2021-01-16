@@ -6,5 +6,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         _chronosStatusBar = ChronosStatusBar()
+        observerManager.add(observer: _chronosStatusBar!)
     }
 }

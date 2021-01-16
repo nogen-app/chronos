@@ -12,7 +12,7 @@ extension Array where Element:NSMenuItem {
     }
 }
 
-class ChronosStatusBar {
+class ChronosStatusBar: Observer {
     private var _exists: [Substring: MenuItemParentLink]
     private var _statusBarItem: NSStatusItem?
     private var _statusBarMenu = NSMenu.init(title: "Chronos")
@@ -32,7 +32,7 @@ class ChronosStatusBar {
         let currentDate: Date = _IPCClient.chooseTimezone(timezone: TimeZone.current)
         
         // Get value from date and Set value in title
-        updateTime(currentDate)
+        refreshView(currentDate)
         
         setupStatusBarMenu()
         
@@ -108,7 +108,7 @@ class ChronosStatusBar {
         let currentDate: Date = _IPCClient.chooseTimezone(timezone: TimeZone.init(identifier: timeZoneToUse)!)
         
         // Get value from date and Set value in title
-        updateTime(currentDate)
+        refreshView(currentDate)
     }
     
     private func splitTimezone(_ timeZone: String) -> (Substring, Substring) {
@@ -125,12 +125,19 @@ class ChronosStatusBar {
         return (parts[0], Substring("\(rest.joined(separator: "/"))"))
     }
 
+
+    private func refreshView(_ date: Date) -> Void {
+        let dateString = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short)
+        _statusBarItem?.button?.title = dateString
+    }
+    
     /**
      * This function is used by the IPCClient to update the time
      */
     public func updateTime(_ date: Date) -> Void {
-        let dateString = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short)
-        
-        _statusBarItem?.button?.title = dateString
+        print("updateTime hit")
+        DispatchQueue.main.sync {
+            self.refreshView(date)
+        }
     }
 }
