@@ -9,22 +9,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+struct Test {
+    var menu: NSMenu
+    var parent: String?
+}
+
 class ChronosStatusBar {
-    private var _exists: [Substring: NSMenu]
-    private var _comp: [Substring: Substring]
+//    private var _exists: [Substring: NSMenu]
+    private var _newExists: [Substring: Test]
     private var _statusBarItem: NSStatusItem?
     private var _statusBarMenu = NSMenu.init(title: "Chronos")
     private let _IPCClient: IPCClient
 
     init() {
         _statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        _exists = [Substring: NSMenu]()
-        _comp = [Substring: Substring]()
+//        _exists = [Substring: NSMenu]()
+        _newExists = [Substring: Test]()
         _IPCClient = IPCClient.init(serviceName: "nogen.Chronos.XPCService")
 
         setup()
     }
-    
+        
     private func setup() -> Void {
 
         // Pass timezone to IPCClient
@@ -40,54 +45,35 @@ class ChronosStatusBar {
     }
     
     private func setupStatusBarMenu() -> Void {
-//        var exists = [Substring: NSMenu]()
-        
         for timeZone in TimeZone.knownTimeZoneIdentifiers {
             if timeZone != "GMT" {
-//                print(timeZone)
-                
-                recurse(timeZone)
-                
-                // 1: Africa/Abidjan -> (Africa, Abidjan)
-                // 2: Africa/Accra -> (Africa, Accra)
-                // 3: America/Argentina/Buenes_aires -> (America, Argentina/Buenes_aires)
-//                let (first, rest) = splitTimezone(timeZone)
-//
-//                if exists[first] == nil {
-//                    let menu = createMenu(title: first, item: rest)
-//                    exists[first] = menu
-//                } else {
-//                    addItemToMenu(menu: exists[first]!, item: rest)
-//                }
+                recurse(timeZone: timeZone)
             }
         }
-        print(_comp)
-        for (title, menu) in _exists {
-            print(title)
-            print(menu.items)
-            print("--------------------------------------------------------")
-            
-//            if menu.items.contains
+
+        for (title, test) in _newExists {
             let menuItem = NSMenuItem.init()
             menuItem.title = String(title)
-            menuItem.submenu = menu
-
-            _statusBarMenu.addItem(menuItem)
+            menuItem.submenu = test.menu
+            
+            if test.parent != nil {
+                _newExists[Substring(test.parent!)]?.menu.addItem(menuItem)
+            } else {
+                _statusBarMenu.addItem(menuItem)
+            }
         }
     }
     
-    private func recurse(_ timeZone: String) {
+    private func recurse(timeZone: String, parent: String? = nil) {
         let (first, rest) = splitTimezone(timeZone)
 
         if rest.contains("/") {
-            let (newFirst, _) = splitTimezone(String(rest))
-            _comp[newFirst] = first
-            recurse(String(rest))
-        } else if _exists[first] == nil {
+            recurse(timeZone: String(rest), parent: String(first))
+        } else if _newExists[first] == nil {
             let menu = createMenu(title: first, item: rest)
-            _exists[first] = menu
+            _newExists[first] = Test(menu: menu, parent: parent)
         } else {
-            addItemToMenu(menu: _exists[first]!, item: rest)
+            addItemToMenu(menu: _newExists[first]!.menu, item: rest)
         }
     }
     
@@ -103,12 +89,23 @@ class ChronosStatusBar {
         let menuItem = NSMenuItem.init()
         
         menuItem.title = item.split(separator: "_").joined(separator: " ")
+//        menuItem.action = #selector(chooseTimezone(_:))
+//        menuItem.
         
         menu.addItem(menuItem)
     }
     
-    // America/Argentina/Buenes_aires
-    // -> (America, Argentina/Buenes_aires)
+    @objc private func chooseTimezone(_ menuItem: NSMenuItem) -> Void {
+        let timeZone = menuItem.title // TODO: Here
+        print(timeZone)
+
+        // Pass timezone to IPCClient
+//        let currentDate: Date = _IPCClient.chooseTimezone(timezone: TimeZone.init(identifier: timeZone)!)
+        
+        // Get value from date and Set value in title
+//        updateTime(currentDate)
+    }
+    
     private func splitTimezone(_ timeZone: String) -> (Substring, Substring) {
         let parts = timeZone.split(separator: "/")
         
