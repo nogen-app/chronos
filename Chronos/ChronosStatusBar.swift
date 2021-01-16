@@ -127,9 +127,6 @@ class ChronosStatusBar: Observer {
 
 
     private func refreshView(_ date: Date) -> Void {
-        print("refreshView: ")
-        print(date)
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         formatter.timeZone = TimeZone.init(abbreviation: "UTC")
