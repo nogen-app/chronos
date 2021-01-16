@@ -7,8 +7,9 @@
 import Foundation
 
 class ChronosServiceDelegate: NSObject, NSXPCListenerDelegate {
-    var _remoteObject: ChronosClientProtocol?
+    private var _remoteObject: ChronosClientProtocol?
     
+    // Creates the listener that specifies how the GUI program can communicate with the service
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
         let exportedObject = ChronosService()
         newConnection.exportedInterface = NSXPCInterface(with: ChronosServiceProtocol.self)
@@ -20,9 +21,10 @@ class ChronosServiceDelegate: NSObject, NSXPCListenerDelegate {
         newConnection.resume()
         return true
     }
-    
-    func RemoteObject() -> ChronosClientProtocol {
+   
+    // Public getter for the _remoteObject
+    // Used so the main program can send data to the GUI
+    public func RemoteObject() -> ChronosClientProtocol {
         return self._remoteObject!
     }
-    
 }

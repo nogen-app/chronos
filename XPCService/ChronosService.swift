@@ -6,8 +6,12 @@
 import Foundation
 
 class ChronosService: NSObject, ChronosServiceProtocol {
-    func chooseTimezone(_ timezone: TimeZone, withReply reply: @escaping (String) -> Void) {
-        //let response = string.uppercased()
-        reply("Succesful")
+    func chooseTimezone(_ timezone: TimeZone, withReply reply: @escaping (Date) -> Void) {
+        // Saves the selected timezone in the global struct
+        SavedTimezone.timezone = timezone
+        
+        
+        // Reply to the gui with the current time for given timezone
+        reply(TimezoneUtil.getDate(timezone: timezone))
     }
 }
