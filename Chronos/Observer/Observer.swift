@@ -18,14 +18,14 @@ public class ObserverManager {
         _observers.append(observer)
     }
     
-    func updateClock(date: Date) -> Void {
+    func updateTime(date: Date) -> Void {
         print("Notifying observers of updateClock")
         _date = date
         notifyObservers()
     }
     
     func notifyObservers() {
-        _observers.forEach({ $0.updateClock(aDate: _date) })
+        _observers.forEach({ $0.updateTime(_date) })
     }
     
     // gui should create an observer that observes the "updateClock" pattern
@@ -34,5 +34,5 @@ public class ObserverManager {
 
 protocol Observer {
     
-    func updateClock(aDate: Date)
+    func updateTime(_ date: Date)
 }

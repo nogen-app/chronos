@@ -6,10 +6,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         _chronosStatusBar = ChronosStatusBar()
+        observerManager.add(observer: _chronosStatusBar!)
     }
 }
 
-class ChronosStatusBar {
+class ChronosStatusBar: Observer {
     private var _statusBarItem: NSStatusItem?
     private var _statusBarMenu = NSMenu.init(title: "Chronos")
     private let _IPCClient: IPCClient
@@ -29,7 +30,7 @@ class ChronosStatusBar {
         // Get value from date and Set value in title
         updateTime(currentDate)
         
-        setupStatusBarMenu()
+        //setupStatusBarMenu()
         
         // Add the status bar menu to the item
         self._statusBarItem?.menu = self._statusBarMenu
@@ -89,6 +90,7 @@ class ChronosStatusBar {
      * This function is used by the IPCClient to update the time
      */
     public func updateTime(_ date: Date) -> Void {
+        print("updateTime got called")
         let dateString = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short)
         
         self._statusBarItem?.button?.title = dateString

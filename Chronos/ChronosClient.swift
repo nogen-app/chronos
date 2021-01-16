@@ -10,6 +10,6 @@ import Foundation
 class ChronosClient: NSObject, ChronosClientProtocol {
     func updateClock(_ date: Date) {
         // This function is called by the XPCService every other second
-        observerManager.updateClock(date: date)
+        observerManager.updateTime(date: date)
     }
 }
