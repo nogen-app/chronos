@@ -86,9 +86,7 @@ class ChronosStatusBar: Observer {
     }
     
     private func addItemToMenu(menu: NSMenu, item: Substring) -> Void {
-        let title = item.split(separator: "_").joined(separator: " ")
-        
-        let menuItem = NSMenuItem.init(title: title, action: #selector(chooseTimezone(_:)), keyEquivalent: "")
+        let menuItem = NSMenuItem.init(title: String(item), action: #selector(chooseTimezone(_:)), keyEquivalent: "")
         menuItem.target = self
         
         menu.addItem(menuItem)
@@ -114,7 +112,9 @@ class ChronosStatusBar: Observer {
     }
     
     private func splitTimezone(_ timeZone: String) -> (Substring, Substring) {
-        let parts = timeZone.split(separator: "/")
+        let normalized = timeZone.split(separator: "_").joined(separator: " ")
+
+        let parts = normalized.split(separator: "/")
         
         var rest: [Substring] = []
         
