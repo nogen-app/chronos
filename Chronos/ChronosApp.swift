@@ -29,6 +29,10 @@ class AppDelegatee: NSObject, NSApplicationDelegate {
         statusBarItem?.button?.title = "Chronos"
 
 
+        // [Africa: [Abidjan, Accra, Addis_Ababa, ...]]
+        // [America: [Adak, Anchorage, Argentina]]
+      
+        
         var timeZones = [Substring: [Substring]]()
 
         for timeZone in TimeZone.knownTimeZoneIdentifiers {
