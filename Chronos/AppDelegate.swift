@@ -1,23 +1,16 @@
-//
-//  AppDelegate.swift
-//  Chronos
-//
-//  Created by Michael Nissen on 31/12/2020.
-//
-
 import Foundation
 import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+    private var _chronosStatusBar: ChronosStatusBar?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
-        var chronosStatusBar = ChronosStatusBar()
-        
+        _chronosStatusBar = ChronosStatusBar()
     }
 }
 
 class ChronosStatusBar {
-    private let _statusBarItem: NSStatusItem?
+    private var _statusBarItem: NSStatusItem?
     private let _IPCClient: IPCClient
 
     init() {
@@ -28,18 +21,21 @@ class ChronosStatusBar {
     }
     
     private func setup() {
+        let currentTimezone = TimeZone.current
+
         // Pass timezone to IPCClient
+        let currentDate: Date = _IPCClient.chooseTimezone(timezone: currentTimezone)
         
-        // Get value from timezone
-        
-        // Set value in title
-        self._statusBarItem?.button?.title = "Title" // This is the time
+        // Get value from date and Set value in title
+        updateTime(currentDate)
     }
     
     /**
      * This function is used by the IPCClient to update the time
      */
     public func updateTime(_ date: Date) {
+        let dateString = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short)
         
+        self._statusBarItem?.button?.title = dateString
     }
 }
