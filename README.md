@@ -33,3 +33,4 @@
 
 - [] Support for all timezones
 - []
+print(_persistentContainer.persistentStoreDescriptions.first?.url)

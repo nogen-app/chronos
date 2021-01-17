@@ -1,20 +1,12 @@
-//
-//  IPCClient.swift
-//  Chronos
-//
-//  Created by Morten Nissen on 28/12/2020.
-//
-
 import Foundation
 import XPCService
 
-
 class IPCClient: ObservableObject {
-    var _connection: NSXPCConnection
-    var _service: ChronosServiceProtocol?
-    var _exportedObject: ChronosClient
+    private var _connection: NSXPCConnection
+    private var _service: ChronosServiceProtocol?
+    private var _exportedObject: ChronosClient
     
-    init(serviceName: String) {
+    init(_ serviceName: String) {
         _exportedObject = ChronosClient()
         _connection = NSXPCConnection.init(serviceName: serviceName)
         
@@ -24,15 +16,15 @@ class IPCClient: ObservableObject {
         
         _connection.resume()
         _service = _connection.remoteObjectProxyWithErrorHandler{ error in
-            print("Received error: ", error)
+            fatalError("Received error: \(error)")
         } as? ChronosServiceProtocol
     }
     
-    func chooseTimezone(timezone: TimeZone) -> Date {
+    public func chooseTimeZone(_ timeZone: TimeZone) -> Date {
         var result = Date()
         let semaphore = DispatchSemaphore(value: 0)
         
-        _service?.chooseTimezone(timezone){ response in
+        _service?.chooseTimeZone(timeZone: timeZone){ response in
             result = response
             semaphore.signal()
         }

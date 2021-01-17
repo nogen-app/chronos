@@ -1,17 +1,11 @@
-//
-//  ChronosService.swift
-//
-//  Created by Morten Nissen on 31/12/2020.
-//
 import Foundation
 
 class ChronosService: NSObject, ChronosServiceProtocol {
-    func chooseTimezone(_ timezone: TimeZone, withReply reply: @escaping (Date) -> Void) {
-        // Saves the selected timezone in the global struct
-        SavedTimezone.timezone = timezone
+    func chooseTimeZone(timeZone: TimeZone, withReply reply: @escaping (Date) -> Void) {
+        // Saves the selected timeZone in the global struct
+        SavedTimeZone.timeZone = timeZone
         
-        
-        // Reply to the gui with the current time for given timezone
-        reply(TimezoneUtil.getDate(timezone: timezone))
+        // Reply to the gui with the current time for given timeZone
+        reply(TimeZoneUtil.getDate(timeZone))
     }
 }

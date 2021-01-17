@@ -1,9 +1,3 @@
-//
-//  ChronosServiceDelegate.swift
-//
-//  Created by Morten Nissen on 31/12/2020.
-//
-
 import Foundation
 
 class ChronosServiceDelegate: NSObject, NSXPCListenerDelegate {
@@ -15,7 +9,8 @@ class ChronosServiceDelegate: NSObject, NSXPCListenerDelegate {
         newConnection.exportedInterface = NSXPCInterface(with: ChronosServiceProtocol.self)
         newConnection.exportedObject = exportedObject
         newConnection.remoteObjectInterface = NSXPCInterface(with: ChronosClientProtocol.self)
-        _remoteObject = newConnection.remoteObjectProxyWithErrorHandler({ error in print("XPC error: ", error)
+        _remoteObject = newConnection.remoteObjectProxyWithErrorHandler({ error in
+            fatalError("XPC error: \(error)")
         }) as? ChronosClientProtocol
         
         newConnection.resume()
