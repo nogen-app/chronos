@@ -9,12 +9,17 @@ class ChronosStatusBar: Observer {
     private let _selectedStatusBarItem: NSStatusItem?
     private let _timeZoneEntity: TimeZoneEntity
     private let _IPCClient: IPCClient
-
+    private var _lookupTable: [Int: String]
+    private var _currentLookupCount: Int
+    
     init(_ persistentContainer: NSPersistentContainer) {
         _statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         _selectedStatusBarItem = nil
         _exists = [Substring: MenuItemParentLink]()
         _IPCClient = IPCClient.init("nogen.Chronos.XPCService")
+        
+        _lookupTable = [Int: String]()
+        _currentLookupCount = 0
         
         _timeZoneEntity = TimeZoneEntity.init(persistentContainer, entityName: "ChronosSettings")
 
@@ -40,17 +45,19 @@ class ChronosStatusBar: Observer {
         
         // Add the status bar menu to the item
         _statusBarItem?.menu = _statusBarMenu
+       
+        setMenuItemStateOn(menuItems: _statusBarMenu.items, identifier: TimeZoneUtility.timeZoneToString(timeZone), state: NSControl.StateValue.on)
     }
     
     private func setupStatusBarMenu() -> Void {
         for timeZone in TimeZone.knownTimeZoneIdentifiers {
             if timeZone != "GMT" {
-                recurse(timeZone: timeZone)
+                recurse(timeZone: timeZone.suffix(from: timeZone.startIndex))
             }
         }
 
         for (title, menuItemParentLink) in _exists {
-            let menuItem = createMenuItem(title)
+            let menuItem = createMenuItem(title, identifier: String(title))
             
             menuItem.submenu = menuItemParentLink.menu
             
@@ -63,33 +70,46 @@ class ChronosStatusBar: Observer {
         }
         
         _statusBarMenu.items.sortByTitle()
-        // TODO: Disable action on top level menu bar items
     }
     
-    private func recurse(timeZone: String, parent: String? = nil) {
+    private func recurse(timeZone: Substring, parent: Substring? = nil) {
         let (first, rest) = TimeZoneUtility.splitTimeZone(timeZone)
 
         if rest.contains("/") {
-            recurse(timeZone: String(rest), parent: String(first))
+            recurse(timeZone: rest, parent: first)
         } else if _exists[first] == nil {
             let menu = NSMenu.init(title: String(first))
-            addItemToMenu(menu: menu, item: rest)
-
+            
+            if parent != nil {
+                addItemToMenu(menu: menu, item: rest, identifier: parent!.base)
+            } else {
+                addItemToMenu(menu: menu, item: rest, identifier: first.base)
+            }
+            
             _exists[first] = MenuItemParentLink(menu: menu, parent: parent)
         } else {
-            addItemToMenu(menu: _exists[first]!.menu, item: rest)
+
+            if _exists[first]?.parent != nil {
+                addItemToMenu(menu: _exists[first]!.menu, item: rest, identifier: parent!.base)
+            } else {
+                addItemToMenu(menu: _exists[first]!.menu, item: rest, identifier: first.base)
+            }
         }
     }
     
-    private func createMenuItem(_ title: Substring) -> NSMenuItem {
+    private func createMenuItem(_ title: Substring, identifier: String) -> NSMenuItem {
         let menuItem = NSMenuItem.init(title: String(title), action: #selector(chooseTimeZone(_:)), keyEquivalent: "")
         menuItem.target = self
+        
+        menuItem.tag = _currentLookupCount
+        _lookupTable[_currentLookupCount] = identifier.split(separator: " ").joined(separator: "_")
+        _currentLookupCount += 1
         
         return menuItem
     }
         
-    private func addItemToMenu(menu: NSMenu, item: Substring) -> Void {
-        let menuItem = createMenuItem(item)
+    private func addItemToMenu(menu: NSMenu, item: Substring, identifier: String) -> Void {
+        let menuItem = createMenuItem(item, identifier: identifier)
         
         menu.addItem(menuItem)
     }
@@ -99,41 +119,60 @@ class ChronosStatusBar: Observer {
 
         formatter.dateFormat = "HH:mm"
         formatter.timeZone = TimeZone.init(abbreviation: "UTC")
-
+ 
         _statusBarItem?.button?.title = formatter.string(from: date)
     }
-    
-    @IBAction private func chooseTimeZone(_ menuItem: NSMenuItem) -> Void {
-        let originalTitle = menuItem.title.split(separator: " ").joined(separator: "_")
-        var timeZoneToUse: String = ""
-        
-        for statusBarItem in _statusBarMenu.items {
-            if statusBarItem.menu != nil {
-                for nestedStatusBarItem in statusBarItem.menu!.items {
-                    
+
+    private func setMenuItemStateOn(menuItems: [NSMenuItem], identifier: String, state: NSControl.StateValue) -> Void {
+        for menuItem in menuItems {
+            if menuItem.submenu != nil {
+//                menuItem.target = nil
+                
+                setMenuItemStateOn(menuItems: menuItem.submenu!.items, identifier: identifier, state: state)
+            } else {
+                if _lookupTable[menuItem.tag] == identifier {
+                    menuItem.state = state
                 }
             }
         }
-
-        for timeZone in TimeZone.knownTimeZoneIdentifiers {
-            if timeZone.contains(originalTitle) {
-                timeZoneToUse = timeZone
+    }
+    
+    private func resetMenuItemsState(_ menuItems: [NSMenuItem]) -> Void {
+        for menuItem in menuItems {
+            if menuItem.submenu != nil {
+                resetMenuItemsState(menuItem.submenu!.items)
+            } else {
+                menuItem.state = NSControl.StateValue.off
             }
         }
-        
-        menuItem.state = NSControl.StateValue.on
-
-        // Pass timezone to IPCClient
-        let currentDate = _IPCClient.chooseTimeZone(TimeZoneUtility.timeZoneFromString(timeZoneToUse))
-        
-        // Get value from date and Set value in title
-        updateTime(currentDate)
-        
-        DispatchQueue.global(qos: .background).async {
-            if self._timeZoneEntity.readTimeZone() != nil {
-                self._timeZoneEntity.updateTimeZone(timeZoneToUse)
+    }
+    
+    @IBAction private func chooseTimeZone(_ menuItem: NSMenuItem) -> Void {
+        if menuItem.submenu == nil {
+            var timeZoneToUse: String = ""
+            
+            if _lookupTable[menuItem.tag] != nil {
+                timeZoneToUse = _lookupTable[menuItem.tag]!
             } else {
-                self._timeZoneEntity.createTimeZone(timeZoneToUse)
+                fatalError("A menuItem is not in the lookupTable")
+            }
+
+            resetMenuItemsState(_statusBarMenu.items)
+            
+            menuItem.state = NSControl.StateValue.on
+
+            // Pass timezone to IPCClient
+            let currentDate = _IPCClient.chooseTimeZone(TimeZoneUtility.timeZoneFromString(timeZoneToUse))
+            
+            // Get value from date and Set value in title
+            updateTime(currentDate)
+            
+            DispatchQueue.global(qos: .background).async {
+                if self._timeZoneEntity.readTimeZone() != nil {
+                    self._timeZoneEntity.updateTimeZone(timeZoneToUse)
+                } else {
+                    self._timeZoneEntity.createTimeZone(timeZoneToUse)
+                }
             }
         }
     }
