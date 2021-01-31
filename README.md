@@ -23,12 +23,7 @@ That is why I decided to create this app - to have a second clock showing in the
 
 ### GitHub Releases
 
+As this is just an OSS projects, the app is not signed which means macOS will complain when trying to open it.
+To open the application, right-click on the downloaded app and select open. This should allow you to open it. A simple double-click will not.
+
 [Download the latest release](https://github.com/nogen-app/chronos/releases/latest/download/Chronos.app.zip)
-
-### Homebrew
-
-If you prefer, this app can also be installed through your command line using `brew`
-
-```sh
-brew install --cask --no-quarantine chronos
-```
