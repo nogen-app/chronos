@@ -50,10 +50,8 @@ class ChronosStatusBar: Observer {
     }
     
     private func setupStatusBarMenu() -> Void {
-        for timeZone in TimeZone.knownTimeZoneIdentifiers {
-            if timeZone != "GMT" {
-                recurse(timeZone: timeZone.suffix(from: timeZone.startIndex))
-            }
+        for timeZone in TimeZone.knownTimeZoneIdentifiers where timeZone != "GMT" {
+            recurse(timeZone: timeZone.suffix(from: timeZone.startIndex))
         }
 
         for (title, menuItemParentLink) in _exists {
