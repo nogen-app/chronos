@@ -5,7 +5,11 @@ public class TimeZoneUtility {
         return timeZone != nil ? TimeZone.init(identifier: timeZone!)! : TimeZone.current
     }
     
-    public class func splitTimeZone(_ timeZone: String) -> (Substring, Substring) {
+    public class func timeZoneToString(_ timeZone: TimeZone) -> String {
+        return timeZone.identifier
+    }
+    
+    public class func splitTimeZone(_ timeZone: Substring) -> (Substring, Substring) {
         let normalized = timeZone.split(separator: "_").joined(separator: " ")
 
         let parts = normalized.split(separator: "/")

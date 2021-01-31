@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ChronosStatusBar.resetMenuItemsState(_:):ChronosStatusBar.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "menuItem.menu!.items">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChronosStatusBar.chooseTimeZone(_:):ChronosStatusBar.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "_lookupTable[2]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChronosStatusBar.recurse(timeZone:parent:):ChronosStatusBar.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChronosStatusBar.createMenuItem(_:):ChronosStatusBar.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChronosStatusBar.createMenuItem(_:test:):ChronosStatusBar.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "_lookupTable[_currentLookupCount]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
