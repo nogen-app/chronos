@@ -19,9 +19,14 @@ The idea came up one day when I was looking for an entry in a database that shou
 
 That is why I decided to create this app - to have a second clock showing in the menubar so that I could have at-a-glance access to the time in a different time zone.
 
+<img src="chronos-install.png"/>
+
 ## Installation
 
 ### GitHub Releases
+
+If you download the app from here, it will not be signed which means macOS will complain when trying to open it.
+To open the application, right-click on the downloaded app and select open. This should allow you to open it. A simple double-click will not.
 
 [Download the latest release](https://github.com/nogen-app/chronos/releases/latest/download/Chronos.app.zip)
 
