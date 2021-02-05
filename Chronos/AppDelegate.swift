@@ -23,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let runningApps = NSWorkspace.shared.runningApplications
         let isLauncherServiceRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppIdentifier }.isEmpty
         
+        // Adds the application to the login items list
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, true)
         
         if isLauncherServiceRunning {
