@@ -23,10 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             terminateApplication()
         }
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
     
     @objc
     private func terminateApplication() -> Void{

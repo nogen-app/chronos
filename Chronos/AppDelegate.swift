@@ -17,16 +17,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Checking to see if the Launcher application helper app is already running
-        // if it is we kill it
-        let launcherAppIdentifier = "nogen.Chronus.LauncherApplication"
+        let launcherAppIdentifier = "nogen.Chronos.LauncherApplication"
         let runningApps = NSWorkspace.shared.runningApplications
+        
+        // Checking to see if the launcher application helper app is already running
         let isLauncherServiceRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppIdentifier }.isEmpty
         
         // Adds the application to the login items list
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, true)
         
         if isLauncherServiceRunning {
+            // Send notification to the launcher application helper app, telling it to kill itself
             DistributedNotificationCenter.default().post(name: NSNotification.Name(rawValue: "killLauncher"), object: Bundle.main.bundleIdentifier!)
         }
         
