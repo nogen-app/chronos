@@ -27,8 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, true)
         
         if isLauncherServiceRunning {
-            // Send notification to the launcher application helper app, telling it to kill itself
-            DistributedNotificationCenter.default().post(name: NSNotification.Name(rawValue: "killLauncher"), object: Bundle.main.bundleIdentifier!)
+            // Send notification to the launcher application helper app, telling it to terminate itself
+            DistributedNotificationCenter.default().post(name: NSNotification.Name(rawValue: "terminateLauncher"), object: Bundle.main.bundleIdentifier!)
         }
         
         _chronosStatusBar = ChronosStatusBar(persistentContainer)

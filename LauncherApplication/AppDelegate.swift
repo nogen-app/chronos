@@ -11,7 +11,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //If the main application is not running, we start it
         if !isMainApplicationRunning {
             // Listens to the killLauncher notification from the main application, so it can be terminated
-            DistributedNotificationCenter.default().addObserver(self, selector: #selector(terminateApplication), name: NSNotification.Name(rawValue: "killLauncher"), object: mainApplicationIdentifier)
+            DistributedNotificationCenter.default().addObserver(self, selector: #selector(terminateApplication), name: NSNotification.Name(rawValue: "terminateLauncher"), object: mainApplicationIdentifier)
 
             
             let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: mainApplicationIdentifier);
