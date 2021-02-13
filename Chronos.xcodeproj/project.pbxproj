@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5717E50725C9DA34007F42DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5717E50625C9DA34007F42DE /* AppDelegate.swift */; };
+		5717E50B25C9DA34007F42DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5717E50A25C9DA34007F42DE /* Assets.xcassets */; };
+		5717E50E25C9DA34007F42DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5717E50C25C9DA34007F42DE /* Main.storyboard */; };
+		5717E51625C9DB26007F42DE /* LauncherApplication.app in Resources */ = {isa = PBXBuildFile; fileRef = 5717E50425C9DA34007F42DE /* LauncherApplication.app */; };
+		5717E51B25C9DB34007F42DE /* LauncherApplication.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5717E50425C9DA34007F42DE /* LauncherApplication.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		578D9EF925B3094E000FFFA0 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578D9EF825B3094E000FFFA0 /* Observer.swift */; };
 		57A536C7259E156400EC3892 /* XPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 57A536BC259E156400EC3892 /* XPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		57A536DF259E16BF00EC3892 /* ChronosServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A536BF259E156400EC3892 /* ChronosServiceDelegate.swift */; };
@@ -19,6 +24,7 @@
 		57A53707259E20F000EC3892 /* IPCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A53706259E20F000EC3892 /* IPCClient.swift */; };
 		57A5370B259E236100EC3892 /* ChronosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5370A259E236100EC3892 /* ChronosClient.swift */; };
 		57A53720259FA6E300EC3892 /* TimeZoneUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5371F259FA6E300EC3892 /* TimeZoneUtil.swift */; };
+		57FDFF2C25C8A97E00329B4F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FDFF2B25C8A97E00329B4F /* ServiceManagement.framework */; };
 		7F5F16122598F2F7004122EF /* ChronosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5F16112598F2F7004122EF /* ChronosApp.swift */; };
 		7F5F16162598F2F8004122EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5F16152598F2F8004122EF /* Assets.xcassets */; };
 		7F5F16192598F2F8004122EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F5F16182598F2F8004122EF /* Preview Assets.xcassets */; };
@@ -37,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5717E51725C9DB26007F42DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F5F16062598F2F7004122EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5717E50325C9DA34007F42DE;
+			remoteInfo = LauncherApplication;
+		};
 		57A536C5259E156400EC3892 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7F5F16062598F2F7004122EF /* Project object */;
@@ -68,9 +81,25 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		57FDFF2625C8A93200329B4F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				5717E51B25C9DB34007F42DE /* LauncherApplication.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5717E50425C9DA34007F42DE /* LauncherApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LauncherApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5717E50625C9DA34007F42DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5717E50A25C9DA34007F42DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5717E50D25C9DA34007F42DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5717E50F25C9DA34007F42DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5717E51025C9DA34007F42DE /* LauncherApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LauncherApplication.entitlements; sourceTree = "<group>"; };
 		578D9EF825B3094E000FFFA0 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		57A536BC259E156400EC3892 /* XPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A536BF259E156400EC3892 /* ChronosServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronosServiceDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +111,7 @@
 		57A53706259E20F000EC3892 /* IPCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCClient.swift; sourceTree = "<group>"; };
 		57A5370A259E236100EC3892 /* ChronosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronosClient.swift; sourceTree = "<group>"; };
 		57A5371F259FA6E300EC3892 /* TimeZoneUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneUtil.swift; sourceTree = "<group>"; };
+		57FDFF2B25C8A97E00329B4F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		7F5F160E2598F2F7004122EF /* Chronos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5F16112598F2F7004122EF /* ChronosApp.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChronosApp.swift; sourceTree = "<group>"; tabWidth = 2; };
 		7F5F16152598F2F8004122EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +133,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5717E50125C9DA34007F42DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57A536B9259E156400EC3892 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,12 +151,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FDFF2C25C8A97E00329B4F /* ServiceManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5717E50525C9DA34007F42DE /* LauncherApplication */ = {
+			isa = PBXGroup;
+			children = (
+				5717E50625C9DA34007F42DE /* AppDelegate.swift */,
+				5717E50A25C9DA34007F42DE /* Assets.xcassets */,
+				5717E50C25C9DA34007F42DE /* Main.storyboard */,
+				5717E50F25C9DA34007F42DE /* Info.plist */,
+				5717E51025C9DA34007F42DE /* LauncherApplication.entitlements */,
+			);
+			path = LauncherApplication;
+			sourceTree = "<group>";
+		};
 		578D9EF725B308F1000FFFA0 /* Observer */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +201,14 @@
 			path = IPC;
 			sourceTree = "<group>";
 		};
+		57FDFF2A25C8A97E00329B4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57FDFF2B25C8A97E00329B4F /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7F5F16052598F2F7004122EF = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +217,9 @@
 				57A536FD259E1EBA00EC3892 /* IPC */,
 				7F5F16102598F2F7004122EF /* Chronos */,
 				57A536BD259E156400EC3892 /* XPCService */,
+				5717E50525C9DA34007F42DE /* LauncherApplication */,
 				7F5F160F2598F2F7004122EF /* Products */,
+				57FDFF2A25C8A97E00329B4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +228,7 @@
 			children = (
 				7F5F160E2598F2F7004122EF /* Chronos.app */,
 				57A536BC259E156400EC3892 /* XPCService.xpc */,
+				5717E50425C9DA34007F42DE /* LauncherApplication.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -254,6 +315,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5717E50325C9DA34007F42DE /* LauncherApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5717E51125C9DA34007F42DE /* Build configuration list for PBXNativeTarget "LauncherApplication" */;
+			buildPhases = (
+				5717E50025C9DA34007F42DE /* Sources */,
+				5717E50125C9DA34007F42DE /* Frameworks */,
+				5717E50225C9DA34007F42DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LauncherApplication;
+			productName = LauncherApplication;
+			productReference = 5717E50425C9DA34007F42DE /* LauncherApplication.app */;
+			productType = "com.apple.product-type.application";
+		};
 		57A536BB259E156400EC3892 /* XPCService */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57A536CB259E156400EC3892 /* Build configuration list for PBXNativeTarget "XPCService" */;
@@ -280,11 +358,13 @@
 				7F5F160C2598F2F7004122EF /* Resources */,
 				57A536C8259E156400EC3892 /* Embed XPC Services */,
 				57A53734259FB4FA00EC3892 /* Embed Frameworks */,
+				57FDFF2625C8A93200329B4F /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				57A536C6259E156400EC3892 /* PBXTargetDependency */,
+				5717E51825C9DB26007F42DE /* PBXTargetDependency */,
 			);
 			name = Chronos;
 			productName = Chronos;
@@ -297,9 +377,12 @@
 		7F5F16062598F2F7004122EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					5717E50325C9DA34007F42DE = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					57A536BB259E156400EC3892 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -323,11 +406,21 @@
 			targets = (
 				7F5F160D2598F2F7004122EF /* Chronos */,
 				57A536BB259E156400EC3892 /* XPCService */,
+				5717E50325C9DA34007F42DE /* LauncherApplication */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5717E50225C9DA34007F42DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5717E50B25C9DA34007F42DE /* Assets.xcassets in Resources */,
+				5717E50E25C9DA34007F42DE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57A536BA259E156400EC3892 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,12 +434,21 @@
 			files = (
 				7F5F16192598F2F8004122EF /* Preview Assets.xcassets in Resources */,
 				7F5F16162598F2F8004122EF /* Assets.xcassets in Resources */,
+				5717E51625C9DB26007F42DE /* LauncherApplication.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5717E50025C9DA34007F42DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5717E50725C9DA34007F42DE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57A536B8259E156400EC3892 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +490,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5717E51825C9DB26007F42DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5717E50325C9DA34007F42DE /* LauncherApplication */;
+			targetProxy = 5717E51725C9DB26007F42DE /* PBXContainerItemProxy */;
+		};
 		57A536C6259E156400EC3892 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 57A536BB259E156400EC3892 /* XPCService */;
@@ -395,10 +502,66 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		5717E50C25C9DA34007F42DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5717E50D25C9DA34007F42DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		5717E51225C9DA34007F42DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LauncherApplication/LauncherApplication.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = LauncherApplication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nogen.Chronos.LauncherApplication;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5717E51325C9DA34007F42DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LauncherApplication/LauncherApplication.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = LauncherApplication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nogen.Chronos.LauncherApplication;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		57A536C9259E156400EC3892 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = IPC;
@@ -418,6 +581,7 @@
 		57A536CA259E156400EC3892 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = IPC;
@@ -556,6 +720,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Chronos/Chronos.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "Chronos/Preview\\ Content IPC";
@@ -581,6 +746,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Chronos/Chronos.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "Chronos/Preview\\ Content IPC";
@@ -602,6 +768,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5717E51125C9DA34007F42DE /* Build configuration list for PBXNativeTarget "LauncherApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5717E51225C9DA34007F42DE /* Debug */,
+				5717E51325C9DA34007F42DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		57A536CB259E156400EC3892 /* Build configuration list for PBXNativeTarget "XPCService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
